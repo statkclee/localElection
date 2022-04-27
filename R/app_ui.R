@@ -11,7 +11,8 @@ app_ui <- function(request) {
     # Your application UI logic
     fluidPage(
       h1("localElection"),
-      mod_shinipsum_ui("shinipsum_1")
+      # mod_shinipsum_ui("shinipsum_1"),
+      mod_overview_ui("overview")
     )
   )
 }

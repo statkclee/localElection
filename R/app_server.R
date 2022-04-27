@@ -6,5 +6,5 @@
 #' @noRd
 app_server <- function(input, output, session) {
   # Your application server logic
-  mod_shinipsum_server("shinipsum_1")
+  # mod_shinipsum_server("shinipsum_1")
 }
