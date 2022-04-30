@@ -5,14 +5,32 @@
 #' @import shiny
 #' @noRd
 app_ui <- function(request) {
+
   tagList(
+    tags$style("@import url(https://use.fontawesome.com/releases/v5.7.2/css/all.css);"),
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # Your application UI logic
-    fluidPage(
-      h1("localElection"),
-      # mod_shinipsum_ui("shinipsum_1"),
-      mod_overview_ui("overview")
+    shinydashboard::dashboardPage(
+      skin = "black",
+      header = shinydashboard::dashboardHeader(
+        title = "제8회 지방선거"
+      ),
+
+      shinydashboard::dashboardSidebar(
+        id = "tabs",
+        shinydashboard::sidebarMenu(
+          shinydashboard::menuItem("입섭", tabName = "ipsum", icon = icon("tachometer-alt")),
+          shinydashboard::menuItem("개요", icon = icon("th"), tabName = "overview")
+        )
+      ),
+      shinydashboard::dashboardBody(
+
+        shinydashboard::tabItems(
+          shinydashboard::tabItem("ipsum", mod_shinipsum_ui("mod_shinipsum_1")),
+          shinydashboard::tabItem("overview", mod_overview_ui("mod_overview_1"))
+        )
+      )
     )
   )
 }
