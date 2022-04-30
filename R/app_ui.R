@@ -7,7 +7,7 @@
 app_ui <- function(request) {
 
   tagList(
-    tags$style("@import url(https://use.fontawesome.com/releases/v5.7.2/css/all.css);"),
+    # tags$style("@import url(https://use.fontawesome.com/releases/v5.7.2/css/all.css);"),
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # Your application UI logic
@@ -18,17 +18,16 @@ app_ui <- function(request) {
       ),
 
       shinydashboard::dashboardSidebar(
-        id = "tabs",
         shinydashboard::sidebarMenu(
-          shinydashboard::menuItem("입섭", tabName = "ipsum", icon = icon("tachometer-alt")),
-          shinydashboard::menuItem("개요", icon = icon("th"), tabName = "overview")
+          shinydashboard::menuItem("개요", icon = icon("th"), tabName = "overview"),
+          shinydashboard::menuItem("로렘입숨", tabName = "ipsum", icon = icon("dashboard"))
         )
       ),
-      shinydashboard::dashboardBody(
 
+      shinydashboard::dashboardBody(
         shinydashboard::tabItems(
-          shinydashboard::tabItem("ipsum", mod_shinipsum_ui("mod_shinipsum_1")),
-          shinydashboard::tabItem("overview", mod_overview_ui("mod_overview_1"))
+          shinydashboard::tabItem("overview", mod_overview_ui("mod_overview_1")),
+          shinydashboard::tabItem("ipsum", mod_shinipsum_ui("mod_shinipsum_1"))
         )
       )
     )
@@ -53,7 +52,7 @@ golem_add_external_resources <- function() {
     favicon(),
     bundle_resources(
       path = app_sys("app/www"),
-      app_title = "localElection"
+      app_title = "대쉬보드"
     )
     # Add here other external resources
     # for example, you can add shinyalert::useShinyalert()
